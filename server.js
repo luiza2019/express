@@ -6,6 +6,7 @@ const fileupload = require("express-fileupload");
 const sequelize = require("./db");
 const routes = require("./routes");
 const path = require("path");
+const morgan = require("morgan");
 
 const app = express();
 
@@ -13,6 +14,10 @@ app.use(cors());
 app.use(fileupload({ createParentPath: true }));
 app.use(express.static(path.resolve("static")));
 app.use(express.json());
+
+// if (process.env.NODE_ENV !== "production") {
+//   app.use(morgan("tiny"));
+// }
 app.use("/api", routes);
 
 const PORT = process.env.PORT || 8080;
