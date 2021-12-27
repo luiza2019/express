@@ -6,7 +6,6 @@ const fileupload = require("express-fileupload");
 const sequelize = require("./db");
 const routes = require("./routes");
 const path = require("path");
-const morgan = require("morgan");
 
 const app = express();
 
