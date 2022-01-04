@@ -6,18 +6,18 @@ const auth = async (req, res, next) => {
     const token = req.headers.authorization.split(" ")[1];
 
     if (!token) {
-      return next(ErrorHandler.UnautorizedError());
+      return next(ErrorHandler.UnauthorizedError());
     }
 
     const userData = validateAccessToken(token);
 
     if (!userData) {
-      return next(ErrorHandler.UnautorizedError());
+      return next(ErrorHandler.UnauthorizedError());
     }
     req.user = userData;
     next();
   } catch (e) {
-    next(ErrorHandler.UnautorizedError());
+    next(ErrorHandler.UnauthorizedError());
   }
 };
 
